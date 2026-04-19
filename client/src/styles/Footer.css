@@ -136,6 +136,33 @@
   text-align: left;
 }
 
+/* Address specific styling - FIXED ALIGNMENT */
+.contact-item.address-item {
+  align-items: flex-start;
+}
+
+.address-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.address-label {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.address-text {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
 /* Social Links */
 .footer-social {
   display: flex;
@@ -229,7 +256,8 @@
   width: 100%;
 }
 
-.footer-links a {
+.footer-links a,
+.footer-link-text {
   color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   font-size: 0.95rem;
@@ -239,6 +267,11 @@
   padding-left: 0;
   position: relative;
   text-align: center;
+  cursor: pointer;
+}
+
+.footer-link-text:hover {
+  color: var(--white);
 }
 
 /* Arrow indicator - Always visible on hover */
@@ -460,7 +493,8 @@
     align-items: center;
   }
   
-  .footer-links a {
+  .footer-links a,
+  .footer-link-text {
     text-align: center;
   }
   
@@ -495,6 +529,15 @@
   .newsletter-form {
     max-width: 100%;
   }
+  
+  .address-content {
+    align-items: flex-start;
+  }
+  
+  .address-label,
+  .address-text {
+    text-align: left;
+  }
 }
 
 @media (max-width: 480px) {
@@ -524,6 +567,14 @@
     font-size: 0.95rem;
   }
   
+  .address-label {
+    font-size: 0.85rem;
+  }
+  
+  .address-text {
+    font-size: 0.9rem;
+  }
+  
   .footer-heading {
     font-size: 1.1rem;
     margin-bottom: 15px;
@@ -539,7 +590,8 @@
     width: 50px;
   }
   
-  .footer-links a {
+  .footer-links a,
+  .footer-link-text {
     font-size: 0.9rem;
   }
   

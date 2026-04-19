@@ -385,16 +385,36 @@ textarea.form-control {
 /* CTA Section */
 .contact-cta {
   padding: 100px 0;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
   text-align: center;
-  color: var(--white);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(249, 199, 79, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contact-cta .container {
+  position: relative;
+  z-index: 1;
 }
 
 .contact-cta h2 {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 20px;
-  color: var(--white);
+  color: white;
+  line-height: 1.2;
 }
 
 .contact-cta p {
@@ -403,169 +423,71 @@ textarea.form-control {
   max-width: 600px;
   margin: 0 auto 40px;
   opacity: 0.95;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.cta-button {
+.contact-cta .cta-button {
   display: inline-block;
-  background: var(--white);
-  color: var(--primary);
-  padding: 16px 40px;
-  border-radius: var(--radius);
-  font-weight: 600;
+  background: linear-gradient(135deg, #f9c74f, #ff9500);
+  color: #1a1a1a;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: 700;
   font-size: 1.1rem;
   text-decoration: none;
-  transition: var(--transition);
-  border: 2px solid transparent;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 10px 30px rgba(249, 199, 79, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.cta-button:hover {
-  background: transparent;
-  color: var(--white);
-  border-color: var(--white);
+.contact-cta .cta-button:hover {
+  background: linear-gradient(135deg, #ff9500, #f9c74f);
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 40px rgba(249, 199, 79, 0.4);
+  color: #1a1a1a;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .contact-title {
-    font-size: 2.5rem;
-  }
-  
-  .contact-grid {
-    gap: 40px;
-  }
-  
-  .info-card, .form-card {
-    padding: 35px;
-  }
-}
-
-@media (max-width: 900px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .contact-info-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  .form-card {
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
-  }
-}
-
+/* Responsive for CTA */
 @media (max-width: 768px) {
-  .contact-hero {
-    padding: 100px 0 60px;
-  }
-  
-  .contact-title {
-    font-size: 2.2rem;
-  }
-  
-  .contact-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .contact-grid-section,
-  .locations-section,
   .contact-cta {
     padding: 80px 0;
   }
-
-  .locations-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-  }
-
-  .info-card, .form-card {
-    padding: 30px;
-  }
-
+  
   .contact-cta h2 {
     font-size: 2rem;
   }
   
-  .cta-button {
-    padding: 14px 35px;
+  .contact-cta p {
+    font-size: 1rem;
+  }
+  
+  .contact-cta .cta-button {
+    padding: 16px 35px;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
   }
 }
 
-@media (max-width: 576px) {
-  .container {
-    padding: 0 20px;
+@media (max-width: 480px) {
+  .contact-cta {
+    padding: 60px 0;
   }
   
-  .contact-title {
-    font-size: 2rem;
-  }
-  
-  .contact-subtitle {
-    font-size: 1rem;
-  }
-
-  .info-header h3 {
-    font-size: 1.3rem;
-  }
-
-  .info-item {
-    gap: 12px;
-  }
-
-  .info-item-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .info-item-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .info-item-label {
-    font-size: 0.75rem;
-  }
-
-  .info-item-value {
-    font-size: 0.95rem;
-  }
-
-  .info-note {
-    padding: 14px 16px;
-  }
-
-  .info-note span {
-    font-size: 0.9rem;
-  }
-
-  .form-title {
-    font-size: 1.5rem;
-  }
-
-  .submit-button {
-    padding: 14px;
-    font-size: 0.95rem;
-  }
-
   .contact-cta h2 {
     font-size: 1.8rem;
   }
   
-  .cta-button {
-    width: 100%;
-    text-align: center;
+  .contact-cta p {
+    font-size: 0.95rem;
   }
   
-  .location-card {
-    padding: 30px 20px;
+  .contact-cta .cta-button {
+    padding: 14px 30px;
   }
+
 
   /* Toast Notification Styles */
 .toast-notification {
@@ -682,6 +604,129 @@ textarea.form-control {
 .submit-button:disabled:hover {
   transform: none;
   box-shadow: none;
+}
+
+/* Clickable Location Cards */
+.clickable-card {
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.clickable-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
+}
+
+.clickable-card:active {
+  transform: translateY(-2px);
+}
+
+.clickable-card:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.view-map-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: rgba(42, 87, 77, 0.08);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 500;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.clickable-card:hover .view-map-hint {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.view-map-hint i {
+  font-size: 12px;
+}
+
+/* Clickable Info Items in Contact Info Card */
+.clickable-info-item {
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 8px;
+  margin: -8px;
+  border-radius: var(--radius);
+}
+
+.clickable-info-item:hover {
+  background: rgba(42, 87, 77, 0.05);
+}
+
+.clickable-info-item:hover .info-item-icon {
+  background: var(--primary);
+}
+
+.clickable-info-item:hover .info-item-icon svg {
+  stroke: white;
+}
+
+.clickable-info-item:hover .info-item-value {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.clickable-info-item:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Add a small external link indicator */
+.clickable-info-item .info-item-value::after {
+  content: "↗";
+  margin-left: 6px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.clickable-info-item:hover .info-item-value::after {
+  opacity: 1;
+}
+
+/* Responsive adjustments for map hint */
+@media (max-width: 768px) {
+  .view-map-hint {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .view-map-hint {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .clickable-info-item .info-item-value::after {
+    display: none;
+  }
+}
+
+/* Accessibility - Focus visible */
+.clickable-card:focus-visible,
+.clickable-info-item:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Remove default button styles when using div as button */
+[role="button"] {
+  user-select: none;
 }
 
 /* Font Awesome Icons - Add this if you haven't already */

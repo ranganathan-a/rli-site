@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-const twilio = require('twilio');
+// const twilio = require('twilio'); // COMMENTED OUT - Twilio disabled
 require('dotenv').config();
 
 const app = express();
@@ -30,15 +30,15 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Twilio client
-let twilioClient = null;
-let whatsappEnabled = false;
+// Twilio client - COMMENTED OUT
+// let twilioClient = null;
+// let whatsappEnabled = false;
 
-if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
-  twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-  whatsappEnabled = true;
-  console.log('✅ Twilio client initialized');
-}
+// if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
+//   twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+//   whatsappEnabled = true;
+//   console.log('✅ Twilio client initialized');
+// }
 
 // ============================================================================
 // API ENDPOINTS
@@ -75,10 +75,10 @@ app.post('/api/consultation', async (req, res) => {
     // Send email
     await sendConsultationEmail(consultation);
     
-    // Send WhatsApp if enabled
-    if (whatsappEnabled) {
-      await sendConsultationWhatsApp(consultation).catch(console.error);
-    }
+    // Send WhatsApp if enabled - COMMENTED OUT
+    // if (whatsappEnabled) {
+    //   await sendConsultationWhatsApp(consultation).catch(console.error);
+    // }
 
     res.status(201).json({
       message: 'Consultation booked successfully!',
@@ -111,9 +111,10 @@ app.post('/api/estimate-request', async (req, res) => {
 
     await sendEstimateEmail(estimateRequest);
     
-    if (whatsappEnabled && updatesOnWhatsapp) {
-      await sendEstimateWhatsApp(estimateRequest).catch(console.error);
-    }
+    // Send WhatsApp if enabled - COMMENTED OUT
+    // if (whatsappEnabled && updatesOnWhatsapp) {
+    //   await sendEstimateWhatsApp(estimateRequest).catch(console.error);
+    // }
 
     res.status(201).json({
       message: 'Estimate request submitted successfully!',
@@ -232,50 +233,50 @@ async function sendContactEmail(contact) {
 }
 
 // ============================================================================
-// WHATSAPP FUNCTIONS
+// WHATSAPP FUNCTIONS - COMMENTED OUT
 // ============================================================================
 
-async function sendConsultationWhatsApp(consultation) {
-  if (!twilioClient || !process.env.ADMIN_WHATSAPP_NUMBER) return;
-  
-  const message = `
-🚀 *New Consultation Booking*
-ID: ${consultation.id}
-Name: ${consultation.full_name}
-Phone: ${consultation.phone_number}
-Email: ${consultation.email}
-City: ${consultation.city}
-Project: ${consultation.project_type}
-Date: ${consultation.preferred_date}
-  `.trim();
+// async function sendConsultationWhatsApp(consultation) {
+//   if (!twilioClient || !process.env.ADMIN_WHATSAPP_NUMBER) return;
+//   
+//   const message = `
+// 🚀 *New Consultation Booking*
+// ID: ${consultation.id}
+// Name: ${consultation.full_name}
+// Phone: ${consultation.phone_number}
+// Email: ${consultation.email}
+// City: ${consultation.city}
+// Project: ${consultation.project_type}
+// Date: ${consultation.preferred_date}
+//   `.trim();
+// 
+//   await twilioClient.messages.create({
+//     body: message,
+//     from: process.env.TWILIO_WHATSAPP_NUMBER,
+//     to: process.env.ADMIN_WHATSAPP_NUMBER
+//   });
+// }
 
-  await twilioClient.messages.create({
-    body: message,
-    from: process.env.TWILIO_WHATSAPP_NUMBER,
-    to: process.env.ADMIN_WHATSAPP_NUMBER
-  });
-}
-
-async function sendEstimateWhatsApp(estimate) {
-  if (!twilioClient || !process.env.ADMIN_WHATSAPP_NUMBER) return;
-  
-  const message = `
-🏠 *New Estimate Request*
-ID: ${estimate.id}
-Name: ${estimate.name}
-Mobile: ${estimate.mobile}
-Email: ${estimate.email}
-Location: ${estimate.location}
-Floorplan: ${estimate.floorplan}
-Purpose: ${estimate.purpose}
-  `.trim();
-
-  await twilioClient.messages.create({
-    body: message,
-    from: process.env.TWILIO_WHATSAPP_NUMBER,
-    to: process.env.ADMIN_WHATSAPP_NUMBER
-  });
-}
+// async function sendEstimateWhatsApp(estimate) {
+//   if (!twilioClient || !process.env.ADMIN_WHATSAPP_NUMBER) return;
+//   
+//   const message = `
+// 🏠 *New Estimate Request*
+// ID: ${estimate.id}
+// Name: ${estimate.name}
+// Mobile: ${estimate.mobile}
+// Email: ${estimate.email}
+// Location: ${estimate.location}
+// Floorplan: ${estimate.floorplan}
+// Purpose: ${estimate.purpose}
+//   `.trim();
+// 
+//   await twilioClient.messages.create({
+//     body: message,
+//     from: process.env.TWILIO_WHATSAPP_NUMBER,
+//     to: process.env.ADMIN_WHATSAPP_NUMBER
+//   });
+// }
 
 // ============================================================================
 // Serve React App
@@ -293,6 +294,6 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
   console.log(`🚀 Server running on port ${port}`);
   console.log(`📧 Email: ${process.env.EMAIL_USER ? 'Configured' : 'Not configured'}`);
-  console.log(`💬 WhatsApp: ${whatsappEnabled ? 'Enabled' : 'Disabled'}`);
+  console.log(`💬 WhatsApp: Disabled`); // Changed to always show Disabled
   console.log(`🌐 http://localhost:${port}`);
 });

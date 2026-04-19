@@ -12,14 +12,14 @@ const Footer = () => {
         <div className="footer-main">
           {/* Brand Section */}
           <div className="footer-brand-section">
-              <div className="footer-brand">
-                <Link to="/" className="footer-logo-link">
-                  Rajalakshmi<br />Hi-Tech Interiors
-                </Link>
-                <p className="footer-tagline">
-                  Trends with unique designs.
-                </p>
-              </div>
+            <div className="footer-brand">
+              <Link to="/" className="footer-logo-link">
+                Rajalakshmi<br />Hi-Tech Interiors
+              </Link>
+              <p className="footer-tagline">
+                Trends with unique designs.
+              </p>
+            </div>
             
             <div className="footer-contact">
               <div className="contact-item">
@@ -30,9 +30,21 @@ const Footer = () => {
                 <i className="fas fa-envelope"></i>
                 <span>rlhitechinteriors@gmail.com</span>
               </div>
-              <div className="contact-item">
+              {/* Showroom Address */}
+              <div className="contact-item address-item">
                 <i className="fas fa-map-marker-alt"></i>
-                <span>Chennai, India</span>
+                <div className="address-content">
+                  <span className="address-label">Showroom</span>
+                  <span className="address-text">No 324, 1/3, 18th street, 5th avenue Ashok Nagar, Chennai - 83</span>
+                </div>
+              </div>
+              {/* Factory Address */}
+              <div className="contact-item address-item">
+                <i className="fas fa-industry"></i>
+                <div className="address-content">
+                  <span className="address-label">Factory</span>
+                  <span className="address-text">No 9 & 10, 2nd floor, Musthapha Salai, Vanagaram, Chennai - 95</span>
+                </div>
               </div>
             </div>
 
@@ -56,12 +68,12 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">SERVICES</h4>
             <ul className="footer-links">
-              <li><Link to="/portfolio?category=residential">Full Home</Link></li>
-              <li><Link to="/portfolio?category=kitchen">Kitchen</Link></li>
-              <li><Link to="/portfolio?category=bedroom">Bedroom</Link></li>
-              <li><Link to="/portfolio?category=living">Living Room</Link></li>
-              <li><Link to="/portfolio?category=wardrobe">Wardrobe</Link></li>
-              <li><Link to="/portfolio?category=commercial">Commercial</Link></li>
+              <li><span className="footer-link-text">Full Home</span></li>
+              <li><span className="footer-link-text">Kitchen</span></li>
+              <li><span className="footer-link-text">Bedroom</span></li>
+              <li><span className="footer-link-text">Living Room</span></li>
+              <li><span className="footer-link-text">Wardrobe</span></li>
+              <li><span className="footer-link-text">Commercial</span></li>
             </ul>
           </div>
 
@@ -102,11 +114,6 @@ const Footer = () => {
             <p className="copyright">
               &copy; {currentYear} Rajalakshmi Hi-Tech Interiors. All rights reserved.
             </p>
-            <div className="footer-legal">
-              <Link to="/privacy">Privacy Policy</Link>
-              <span className="divider">|</span>
-              <Link to="/terms">Terms of Service</Link>
-            </div>
           </div>
         </div>
       </div>

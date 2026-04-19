@@ -3,6 +3,7 @@ import HowItWorks from './HowItWorks';
 import PricingCalculator from './PricingCalculator';
 import Offerings from './Offerings';
 import DesignMagazine from './DesignMagazine';
+import HappyClients from './HappyClients';
 import Consultation from './Consultation';
 import WhyChooseService from './WhyChooseService';
 import '../../styles/HeroSection.css';
@@ -209,6 +210,7 @@ const HeroSection = () => {
       <WhyChooseService />
       <Offerings />
       <PricingCalculator />
+      <HappyClients />
       <Consultation />
     </>
   );

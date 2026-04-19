@@ -70,7 +70,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('http://localhost:3000/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,6 +93,19 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+
+  // Map links for locations
+  const showroomMapLink = "https://maps.app.goo.gl/AdPU55UjFyGspscDA";
+  const factoryMapLink = "https://maps.app.goo.gl/YfyuRC3muiogCjDr6";
+
+  // Function to open map link in new tab
+  const openMapLink = (mapLink) => {
+    window.open(mapLink, '_blank');
+  };
+
+  // Addresses for display
+  const showroomAddress = "No 324, 1/3, 18th street, 5th avenue, Ashok Nagar, Chennai - 600083";
+  const factoryAddress = "No 9 & 10, 2nd floor, Musthapha Salai, Vanagaram, Chennai - 600095";
 
   return (
     <main className="contact-page">
@@ -170,7 +183,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="info-item">
+                  <div className="info-item clickable-info-item" onClick={() => openMapLink(showroomMapLink)}>
                     <div className="info-item-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -179,11 +192,11 @@ const Contact = () => {
                     </div>
                     <div className="info-item-content">
                       <span className="info-item-label">Showroom</span>
-                      <span className="info-item-value">No 324, 18th Street, Ashok Nagar, Chennai - 83</span>
+                      <span className="info-item-value">{showroomAddress}</span>
                     </div>
                   </div>
 
-                  <div className="info-item">
+                  <div className="info-item clickable-info-item" onClick={() => openMapLink(factoryMapLink)}>
                     <div className="info-item-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
@@ -192,7 +205,7 @@ const Contact = () => {
                     </div>
                     <div className="info-item-content">
                       <span className="info-item-label">Factory</span>
-                      <span className="info-item-value">No 9&10, 2nd floor, Musthapha Salai, Vanagaram, Chennai - 95</span>
+                      <span className="info-item-value">{factoryAddress}</span>
                     </div>
                   </div>
                 </div>
@@ -290,7 +303,13 @@ const Contact = () => {
         <div className="container">
           <h2 className="section-title">Our Locations</h2>
           <div className="locations-grid">
-            <div className="location-card">
+            <div 
+              className="location-card clickable-card" 
+              onClick={() => openMapLink(showroomMapLink)}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => e.key === 'Enter' && openMapLink(showroomMapLink)}
+            >
               <div className="location-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
@@ -300,8 +319,17 @@ const Contact = () => {
               <h3>Showroom</h3>
               <p>No 324, 1/3, 18th street, 5th avenue<br />Ashok Nagar, Chennai - 83</p>
               <p className="location-phone">044 - 24743301</p>
+              <span className="view-map-hint">
+                <i className="fas fa-map-marker-alt"></i> Click to view on map
+              </span>
             </div>
-            <div className="location-card">
+            <div 
+              className="location-card clickable-card" 
+              onClick={() => openMapLink(factoryMapLink)}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => e.key === 'Enter' && openMapLink(factoryMapLink)}
+            >
               <div className="location-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
@@ -311,6 +339,9 @@ const Contact = () => {
               <h3>Factory</h3>
               <p>No 9 & 10, 2nd floor, Musthapha Salai<br />Vanagaram, Chennai - 95</p>
               <p className="location-phone">+91 8248651091</p>
+              <span className="view-map-hint">
+                <i className="fas fa-map-marker-alt"></i> Click to view on map
+              </span>
             </div>
           </div>
         </div>
