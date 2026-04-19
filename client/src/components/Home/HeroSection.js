@@ -1,3 +1,4 @@
+// src/components/HeroSection.js
 import React, { useState, useEffect, useRef } from 'react';
 import HowItWorks from './HowItWorks';
 import PricingCalculator from './PricingCalculator';
@@ -12,6 +13,11 @@ const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slidesRef = useRef(null);
   const isTransitioning = useRef(false);
+  
+  // Fix reload issue - scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   const slides = [
     {
@@ -184,11 +190,6 @@ const HeroSection = () => {
                     </a>
                   ))}
                 </div>
-
-                {/* <div className="hero-note">
-                  <span className="star">★</span>
-                  {slide.note}
-                </div> */}
               </div>
             </div>
           ))}

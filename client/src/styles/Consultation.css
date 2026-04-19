@@ -1,13 +1,32 @@
-/* Consultation.css - Updated to Match LivePace Design with White Background */
+/* Consultation.css - Updated with consistent styling */
+:root {
+  --primary: #2a574d;
+  --primary-light: #3b7a6e;
+  --secondary: #e6b89c;
+  --accent: #d4a574;
+  --light: #f8f5f2;
+  --dark: #333333;
+  --gray: #777777;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --radius: 8px;
+  --transition: all 0.3s ease;
+}
 
 .consultation-section {
-  padding: 100px 0;
-  background-color: white; /* Changed to white to match PricingModules */
+  padding: 50px 0;
+  background-color: white;
   position: relative;
   overflow: hidden;
 }
 
-/* Subtle background pattern matching LivePace - kept but subtle on white */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Subtle background pattern */
 .consultation-section::before {
   content: '';
   position: absolute;
@@ -23,17 +42,16 @@
 
 .consultation-card {
   background: white;
-  border-radius: 8px;
-  padding: 60px 50px;
+  border-radius: var(--radius);
+  padding: 50px 40px;
   text-align: center;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   position: relative;
   z-index: 1;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   max-width: 900px;
   margin: 0 auto;
-  border: 1px solid rgba(230, 184, 156, 0.3); /* Updated to match PricingModules border */
+  border: 1px solid rgba(230, 184, 156, 0.3);
 }
 
 .consultation-card:hover {
@@ -42,23 +60,22 @@
 }
 
 .consultation-icon {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
-  color: #2a574d;
+  color: var(--primary);
 }
 
-/* Decorative circle around icon */
 .consultation-icon::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  background: rgba(42, 87, 77, 0.1);
+  width: 110px;
+  height: 110px;
+  background: rgba(42, 87, 77, 0.08);
   border-radius: 50%;
   z-index: -1;
 }
@@ -67,7 +84,7 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #2a574d;
+  color: var(--primary);
   letter-spacing: -0.3px;
   line-height: 1.3;
 }
@@ -82,17 +99,16 @@
 }
 
 .consultation-subtitle {
-  color: #333333;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 1.5rem;
   font-weight: 600;
-  color: #e6b89c;
+  color: var(--secondary);
 }
 
 .consultation-description {
-  color: #777777;
-  margin-bottom: 3rem;
-  line-height: 1.6;
+  color: var(--gray);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -103,7 +119,7 @@
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -111,29 +127,25 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  color: #333333;
+  color: var(--dark);
   font-weight: 500;
   font-size: 1rem;
   padding: 1rem 1.5rem;
-  background: #f8f5f2;
-  border-radius: 8px;
+  background: var(--light);
+  border-radius: var(--radius);
   border: 1px solid rgba(230, 184, 156, 0.3);
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .highlight-item:hover {
-  background: #e6b89c;
-  color: #333333;
-  border-color: #e6b89c;
+  background: var(--secondary);
+  color: var(--dark);
+  border-color: var(--secondary);
   transform: translateY(-2px);
 }
 
-.highlight-item:hover i {
-  color: #333333;
-}
-
 .highlight-item i {
-  color: #2a574d;
+  color: var(--primary);
   font-size: 1.1rem;
 }
 
@@ -143,17 +155,16 @@
   margin-top: 2rem;
 }
 
-/* Primary Button - Matching LivePace Style */
 .btn-consultation-primary {
-  background: linear-gradient(135deg, var(--accent-gold), #ff9500);
+  background: linear-gradient(135deg, #f9c74f, #ff9500);
   color: #000;
   padding: 14px 32px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   font-weight: 600;
   font-size: 1rem;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   display: inline-flex;
   align-items: center;
   gap: 1rem;
@@ -166,7 +177,7 @@
 }
 
 .btn-consultation-primary:hover {
-  background: linear-gradient(135deg, #ff9500, var(--accent-gold));
+  background: linear-gradient(135deg, #ff9500, #f9c74f);
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(249, 199, 79, 0.4);
   color: #000;
@@ -181,13 +192,12 @@
   transform: translateX(5px);
 }
 
-/* Stats section matching LivePace style */
 .consultation-stats {
   display: flex;
   gap: 2rem;
   margin-top: 2.5rem;
   padding-top: 2.5rem;
-  border-top: 1px solid #f0f0f0; /* Matches PricingModules divider */
+  border-top: 1px solid #f0f0f0;
   justify-content: center;
 }
 
@@ -200,21 +210,21 @@
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: #2a574d;
+  color: var(--primary);
   margin-bottom: 0.3rem;
   line-height: 1;
 }
 
 .stat-label {
   font-size: 0.9rem;
-  color: #777777;
+  color: var(--gray);
   font-weight: 500;
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
   .consultation-card {
-    padding: 50px 30px;
+    padding: 40px 30px;
     margin: 0 20px;
   }
   
@@ -235,12 +245,11 @@
 
 @media (max-width: 768px) {
   .consultation-section {
-    padding: 80px 0;
+    padding: 40px 0;
   }
   
   .consultation-card {
-    padding: 40px 20px;
-    border-radius: 8px;
+    padding: 35px 25px;
   }
   
   .consultation-title {
@@ -253,7 +262,6 @@
   
   .consultation-highlights {
     gap: 1rem;
-    margin-bottom: 2.5rem;
   }
   
   .highlight-item {
@@ -298,8 +306,8 @@
   }
   
   .consultation-icon::before {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
   
   .consultation-highlights {
@@ -320,11 +328,6 @@
     min-width: auto;
     padding: 14px 20px;
   }
-  
-  .consultation-info {
-    font-size: 0.85rem;
-    padding: 0.8rem;
-  }
 }
 
 /* Animation */
@@ -339,19 +342,6 @@
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
 .consultation-card {
   animation: fadeInUp 0.8s ease-out;
-}
-
-.btn-consultation-primary:hover {
-  animation: pulse 0.5s ease;
 }

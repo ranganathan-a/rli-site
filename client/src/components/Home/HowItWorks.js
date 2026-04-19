@@ -1,3 +1,4 @@
+// src/components/HowItWorks.js
 import React from 'react';
 import '../../styles/HowItWorks.css';
 
@@ -27,8 +28,8 @@ const HowItWorks = () => {
     <section className="how-it-works-section" id="how-it-works">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Get Your Personalized Estimate in 3 Simple Steps</h2>
-          <p className="section-subtitle">Our streamlined process makes it easy to transform your space from concept to completion.</p>
+          <h2 className="section-main-title">How It Works</h2>
+          <p className="section-subtitle">Get your personalized estimate in 3 simple steps</p>
         </div>
         
         <div className="steps-container">
@@ -43,15 +44,6 @@ const HowItWorks = () => {
             </div>
           ))}
         </div>
-        
-        {/* <div className="cta-container">
-          <h3>Ready to Transform Your Space?</h3>
-          <p>Start your interior design journey today with our free consultation. No commitments, just expert advice.</p>
-          <a href="#consultation" className="cta-button">
-            <i className="fas fa-calendar-check"></i>
-            Book Free Consultation
-          </a>
-        </div> */}
       </div>
     </section>
   );

@@ -44,12 +44,6 @@ const PricingCalculator = () => {
       {/* Pricing Modules Section */}
       <PricingModules />
       
-
-      <footer>
-        <div className="container">
-          <p>&copy; 2024 Interior Design Solutions. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 };
